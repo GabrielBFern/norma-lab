@@ -1,8 +1,13 @@
 [package]
-name = "vite-wasm-functions"
+name = "norma-site-wasm"
 version = "0.1.0"
-authors = ["Daniel Segovia <segoarce90@gmail.com>"]
+authors = ["Gabriel Barbosa Fernandes <fernandesbgabriel@gmail.com>"]
 edition = "2018"
+license = "MIT"
+categories = ["mathematics", "science", "simulation"]
+description = """
+Webpage for education on the Norma Machines.
+"""
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -11,9 +16,11 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook"]
 
 [dependencies]
-serde = "1.0.130"
-serde_derive = "1.0.130"
+serde = { version = "1.0.130", features = ["derive"] }
+serde-wasm-bindgen = "0.4"
 serde_json = "1.0.68"
+pest = "2.5.5"
+norma_machine_rs = {git = "https://github.com/GabrielBFern/norma-machine-rs", branch="main"}
 wasm-bindgen = { version = "0.2.63", features = ["serde-serialize"] }
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
@@ -28,6 +35,23 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 #
 # Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
 wee_alloc = { version = "0.4.5", optional = true }
+js-sys = "0.3.57"
+lazy_static = "1.4.0"
+getrandom = { version = "0.2.6", features = ["js"] }
+
+
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'Document',
+  'Element',
+  'HtmlElement',
+  'Node',
+  'Window',
+]
+
+
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.13"

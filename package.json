@@ -1,7 +1,7 @@
 {
-  "name": "wasm-monorepo",
-  "version": "1.0.0",
-  "author": "Daniel Segovia <segoarce90@gmail.com>",
+  "name": "norma-site-monorepo",
+  "version": "0.0.1",
+  "author": "Gabriel Barbosa Fernandes <fernandesbgabriel@gmail.com>",
   "license": "MIT",
   "private": true,
   "workspaces": [

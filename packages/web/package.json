@@ -9,8 +9,12 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
+    "@codemirror/commands": "^6.1.1",
+    "@codemirror/theme-one-dark": "^6.1.1",
+    "@codemirror/lint": "^6.1.1",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
     "@tsconfig/svelte": "^2.0.1",
+    "codemirror": "^6.0.1",
     "svelte": "^3.37.0",
     "svelte-check": "^2.1.0",
     "svelte-preprocess": "^4.7.2",
@@ -19,6 +23,7 @@
     "vite": "^2.6.4"
   },
   "dependencies": {
-    "vite-wasm-functions": "^0.1.0"
+    "codemirror": "^6.0.1",
+    "norma-site-wasm": "^0.1.0"
   }
 }

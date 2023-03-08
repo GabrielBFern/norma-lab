@@ -1,16 +1,27 @@
 import App from './App.svelte'
-import init from 'vite-wasm-functions'
+import init from 'norma-site-wasm'
+//import 'codemirror/lib/codemirror.css'
+//import 'codemirror/addon/lint/lint.css'
+//import 'codemirror/theme/dracula.css'
+
+
 
 const load = async () => {
-  const startTime = performance.now()
-  await init()
-  const endTime = performance.now()
-  console.log(`Call to wasm init took ${endTime - startTime} milliseconds`)
+    const startTime = performance.now();
+    await init();
+    const endTime = performance.now();
+    console.log(`Call to wasm init took ${endTime - startTime} milliseconds`)
 
 
-  const app = new App({
-    target: document.getElementById('app')
-  })
+
+    const app = new App({
+        target: document.getElementById('app')
+    })
+
+
 }
 
-load()
+load();
+
+
+
