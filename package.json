@@ -11,13 +11,18 @@
   "scripts": {
     "web:dev": "yarn workspace web dev",
     "web:build": "yarn workspace web build",
+    "web:deploy": "yarn workspace web deploy",
     "rust:dev": "cd packages/rust && cargo watch -i .gitignore -i \"pkg/*\" -s \"wasm-pack build --target web\"",
     "rust:build": "cd packages/rust && wasm-pack build --target web",
     "dev": "concurrently --kill-others-on-fail \"yarn web:dev\"  \"yarn rust:dev\"",
     "build": "yarn rust:build && yarn web:build",
+    "deploy": "yarn rust:build && yarn web:deploy",
     "ci:build": "yarn rust:build && yarn && yarn web:build"
   },
   "dependencies": {
     "concurrently": "^6.3.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
