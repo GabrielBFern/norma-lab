@@ -6,7 +6,6 @@
     <h1>NormaLab</h1>
     <div class="Frame">
         <NormaFrame />
-        <NormaFrame />
     </div>
 </main>
 

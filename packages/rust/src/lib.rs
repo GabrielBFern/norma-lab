@@ -1,7 +1,10 @@
 mod utils;
 
+use std::collections::HashMap;
+
 use norma_machine_rs::{error::NormaMachineError, NormaMachine};
 use norma_machine_rs::{Context, NormaProgram};
+use num::BigUint;
 
 use pest::error::LineColLocation;
 use wasm_bindgen::prelude::*;
@@ -28,6 +31,12 @@ extern "C" {
 #[wasm_bindgen]
 pub struct NormaInstance {
     program: Option<NormaProgram>,
+}
+
+#[derive(Deserialize)]
+pub struct Reg {
+    name: String,
+    value: String,
 }
 
 /// Public methods, exported to JavaScript.
@@ -65,6 +74,14 @@ impl NormaInstance {
                 };
                 serde_wasm_bindgen::to_value(&error).unwrap()
             }
+            Err(NormaMachineError::InvalidLabel(err)) => {
+                let error = ParseError {
+                    message: err,
+                    start: (0, 0),
+                    end: (0, 0),
+                };
+                serde_wasm_bindgen::to_value(&error).unwrap()
+            }
         }
     }
 
@@ -72,6 +89,20 @@ impl NormaInstance {
     pub fn prepare_machine(&self) -> Option<WrappedNormaMachine> {
         Some(WrappedNormaMachine {
             machine: NormaMachine::new(self.program.clone().unwrap()),
+        })
+    }
+
+    #[wasm_bindgen(js_name = "prepareMachinefromContext")]
+    pub fn prepare_machine_with_context(&self, regs: String) -> Option<WrappedNormaMachine> {
+        let ctx: Vec<Reg> = serde_json::from_str(&regs).unwrap();
+        let ctx: HashMap<String, BigUint> = ctx
+            .into_iter()
+            .map(|e| (e.name, e.value.parse::<BigUint>().unwrap()))
+            .collect();
+        let ctx = Context::from_registers(ctx);
+
+        Some(WrappedNormaMachine {
+            machine: NormaMachine::from_context(self.program.clone().unwrap(), ctx),
         })
     }
 
@@ -108,6 +139,7 @@ impl WrappedNormaMachine {
     #[wasm_bindgen(js_name = "runBound")]
     pub fn run_bound(&mut self, steps: usize, reg_update: &js_sys::Function) -> bool {
         for _try in 1..steps {
+            update_registers(self.machine.get_context(), reg_update);
             if self.machine.run_bound().is_none() {
                 update_registers(self.machine.get_context(), reg_update);
                 return false;
