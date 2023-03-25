@@ -1,3 +1,5 @@
-ifz x (4,2)
+// Adiciona o valor de x em y consumindo o valor em x
+loop: ifz x (end,3)
 dec x 
-inc y (1)
+inc y (loop)
+end:

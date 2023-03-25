@@ -1,3 +1,4 @@
-ifz x (4,2)
+// Diminui o valor x de y consumindo o valor em x
+ifz x (5,3)
 dec x 
-dec y (1) 
+dec y (2)
