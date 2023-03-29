@@ -1,0 +1,4 @@
+- [] Disable toolbar edits when debug is running
+- [] Add labels system (named line to goto)
+- [] Add comments support
+- [] Make profile to speed up execution (i suspect that the bottleneck is when rust call js to update the registers, Maybe add a fake animation when the execution is running?)

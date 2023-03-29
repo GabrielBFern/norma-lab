@@ -1,0 +1,9 @@
+// Soma o valor de x em y mantendo o valor original em x
+add_x_y:ifz x (restore_x,3)
+dec x 
+inc x2
+inc y (add_x_y)
+restore_x: ifz x2 (end,7)
+inc x
+dec x2 (restore_x)
+end:

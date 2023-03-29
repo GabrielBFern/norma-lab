@@ -1,0 +1,33 @@
+<script lang="ts">
+    import Frame from "./Frame.svelte";
+    import CodeMirror from "./CodeMirror6.svelte";
+    import Executer from "./Executer.svelte";
+    import { NormaInstance } from "norma-site-wasm";
+    export let slim = false;
+    export let fixedProgram = undefined;
+    let editor = null;
+    let x = NormaInstance.new();
+</script>
+
+<div class="Frame">
+    <Frame>
+        <div class="code" slot="code-view">
+            <CodeMirror bind:editor {slim} {fixedProgram} />
+        </div>
+        <div class="exec" slot="execution-view">
+            <Executer {editor} normaInstance={x} {slim} />
+        </div>
+    </Frame>
+</div>
+
+<style>
+    :root {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    .exec {
+        text-align: center;
+        min-width: max-content;
+    }
+</style>
