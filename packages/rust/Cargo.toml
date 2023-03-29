@@ -20,7 +20,7 @@ default = ["console_error_panic_hook"]
 serde = { version = "1.0.130", features = ["derive"] }
 serde-wasm-bindgen = "0.4"
 serde_json = "1.0.68"
-pest = "2.5.5"
+pest = "2.5.6"
 norma_machine_rs = {git = "https://github.com/GabrielBFern/norma-machine-rs", branch="main"}
 wasm-bindgen = { version = "0.2.63", features = ["serde-serialize"] }
 
@@ -39,6 +39,8 @@ wee_alloc = { version = "0.4.5", optional = true }
 js-sys = "0.3.57"
 lazy_static = "1.4.0"
 getrandom = { version = "0.2.6", features = ["js"] }
+primal-sieve = "0.3.6"
+num = "0.4.0"
 
 
 

@@ -1,13 +1,12 @@
 <script lang="ts">
-    import NormaFrame from "./lib/NormaCodeFrame.svelte";
+    import { link } from "svelte-spa-router";
+    import Router from "svelte-spa-router";
+    import routes from "./routes";
 </script>
 
 <main>
-    <h1>NormaLab</h1>
-    <div class="Frame">
-        <NormaFrame />
-        <NormaFrame />
-    </div>
+    <h1><a href="/" use:link>NormaLab</a></h1>
+    <Router {routes} />
 </main>
 
 <style>
@@ -30,6 +29,11 @@
         line-height: 1.1;
         margin: 2rem auto;
         max-width: 14rem;
+    }
+
+    a {
+        color: inherit; /* blue colors for links too */
+        text-decoration: inherit; /* no underline */
     }
 
     @media (min-width: 480px) {
