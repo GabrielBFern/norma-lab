@@ -27,7 +27,7 @@ class HyperLink extends WidgetType {
 };
 
 const linkDecorator = new MatchDecorator({
-    regexp: /https?:\/\/(?:w{1,3}\.)?[^\s.]+(?:\.[a-z]+)*(?::\d+)?((?:\/\w+)|(?:-\w+))*\/?(?![^<]*(?:<\/\w+>|\/?>))/ig,
+    regexp: /https?:\/\/\S+/ig,
     decorate: (add, from, to, match, view) => {
         const url = match[0];
         const start = to, end = to;

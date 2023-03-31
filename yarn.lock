@@ -564,6 +564,11 @@
   "resolved" "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz"
   "version" "2.0.4"
 
+"ip-regex@^4.1.0":
+  "integrity" "sha512-B9ZWJxHHOHUhUjCPrMpLD4xEq35bUTClHM1S6CBU5ixQnkZmwipwgc96vAd7AAGM9TGHvJR+Uss+/Ak6UphK+Q=="
+  "resolved" "https://registry.npmjs.org/ip-regex/-/ip-regex-4.3.0.tgz"
+  "version" "4.3.0"
+
 "is-binary-path@~2.1.0":
   "integrity" "sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw=="
   "resolved" "https://registry.npmjs.org/is-binary-path/-/is-binary-path-2.1.0.tgz"
@@ -1020,6 +1025,11 @@
   "resolved" "https://registry.npmjs.org/svelte/-/svelte-3.48.0.tgz"
   "version" "3.48.0"
 
+"tlds@^1.203.0":
+  "integrity" "sha512-lFPF9pZFhLrPodaJ0wt9QIN0l8jOxqmUezGZnm7BfkDSVd9q667oVIJukLVzhF+4oW7uDlrLlfJrL5yu9RWwew=="
+  "resolved" "https://registry.npmjs.org/tlds/-/tlds-1.238.0.tgz"
+  "version" "1.238.0"
+
 "to-regex-range@^5.0.1":
   "integrity" "sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ=="
   "resolved" "https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz"
@@ -1059,6 +1069,14 @@
   "resolved" "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz"
   "version" "0.1.2"
 
+"url-regex@^5.0.0":
+  "integrity" "sha512-O08GjTiAFNsSlrUWfqF1jH0H1W3m35ZyadHrGv5krdnmPPoxP27oDTqux/579PtaroiSGm5yma6KT1mHFH6Y/g=="
+  "resolved" "https://registry.npmjs.org/url-regex/-/url-regex-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "ip-regex" "^4.1.0"
+    "tlds" "^1.203.0"
+
 "vite@^2.6.4", "vite@^2.9.0":
   "integrity" "sha512-zsBGwn5UT3YS0NLSJ7hnR54+vUKfgzMUh/Z9CxF1YKEBVIe213+63jrFLmZphgGI5zXwQCSmqIdbPuE8NJywPw=="
   "resolved" "https://registry.npmjs.org/vite/-/vite-2.9.8.tgz"
@@ -1080,6 +1098,7 @@
   "resolved" "file:packages/web"
   "version" "0.0.0"
   dependencies:
+    "@fortawesome/fontawesome-free" "^6.4.0"
     "codemirror" "^6.0.1"
     "norma-site-wasm" "^0.1.0"
     "svelte-spa-router" "^3.3.0"
