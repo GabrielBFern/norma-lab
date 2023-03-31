@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { NormaInstance, WrappedNormaMachine } from "norma-site-wasm";
-  import RegistersHold from "./RegistersHold.svelte";
   import { slide } from "svelte/transition";
   import RegistersCards from "./RegistersCards.svelte";
+  import "@fortawesome/fontawesome-free/css/all.css";
 
   export let editor;
   export let normaInstance: NormaInstance;
@@ -10,20 +10,13 @@
 
   let normaMachine: WrappedNormaMachine;
   let collapse_input = false;
-  let input_registers: Map<String, BigInt> = new Map();
   let input_registers2 = [];
-  let phantom_changes = 0;
 
-  const change_register = (register: String, value: BigInt) => {
-    status.register.set(register, value);
-    phantom_changes += 1;
-    if (phantom_changes % 100 === 0) {
-      console.log(status.register);
-      console.log(phantom_changes);
-      console.log("last redraw:" + redraw);
-    }
-    // Activate svelte reactivity
-    status.register = status.register;
+  const change_register = (register: string, value: BigInt) => {
+    status.register = [
+      ...status.register.filter((e) => e.title !== register),
+      { title: register, value: value.toString() },
+    ];
   };
   const change_line = (line: number) => {
     editor.currentDebugLine(line);
@@ -33,14 +26,14 @@
     isRunning: boolean;
     isDebug: boolean;
     line: number;
-    register: Map<String, BigInt>;
+    register: { title: string; value: string }[];
     isAutoRun: boolean;
 
     constructor() {
       this.isRunning = false;
       this.isDebug = false;
       this.isAutoRun = false;
-      this.register = new Map();
+      this.register = [];
       this.line = 1;
     }
   }
@@ -54,17 +47,20 @@
   };
 
   let prepareMachine = () => {
-    if (input_registers.size !== 0) {
+    if (input_registers2.length !== 0) {
       let reg_json_safe = [];
-      input_registers.forEach((v, k) => {
-        reg_json_safe.push({ name: k, value: v.toString(10) });
+      input_registers2.forEach(({ title, value }) => {
+        reg_json_safe.push({ name: title, value: value });
       });
       let regs = JSON.stringify(reg_json_safe);
-      console.log(regs);
       normaMachine = normaInstance.prepareMachinefromContext(regs);
     } else {
       normaMachine = normaInstance.prepareMachine();
     }
+  };
+
+  let updateInputReg = (newRegs) => {
+    input_registers2 = newRegs;
   };
 
   function keepRun() {
@@ -101,7 +97,6 @@
   };
   const next = () => {
     normaMachine.nextDebug(change_register, change_line);
-    status.register;
   };
 
   const ative_auto_next = () => {
@@ -116,53 +111,66 @@
   const collapseInput = () => {
     collapse_input = !collapse_input;
   };
-  const handleNewInputRegister = () => {
-    let register = prompt("Que registro deseja criar?");
-    if (!register) return;
-    input_registers.set(register, BigInt(0));
-    console.log(input_registers);
-    input_registers = new Map(input_registers);
-    collapse_input = false;
-  };
   setInterval(automatic_next, 1000);
-  $: redraw = phantom_changes;
 </script>
 
 <div class="controls">
   <div class="toolbar">
     {#if !status.isRunning}
-      <button class="toolbar-button" on:click={play}>Run</button>
-      <button class="toolbar-button" on:click={debug}>Debug</button>
+      <button class="toolbar-button" on:click={play}>
+        <i class="fas fa-play header_icon" />
+        Run
+      </button>
+      <button class="toolbar-button" on:click={debug}>
+        <i class="fas fa-bug header_icon" />
+        Debug
+      </button>
     {/if}
     {#if status.isRunning}
-      <button class="toolbar-button" on:click={reset}>Reset</button>
+      <button class="toolbar-button" on:click={reset}>
+        <i class="fas fa-redo header_icon" />
+        Reset
+      </button>
     {/if}
   </div>
   {#if status.isDebug}
     <div class="toolbar debug-toolbar">
-      <button class="toolbar-button" on:click={next}>Next</button>
-      <button class="toolbar-button" on:click={ative_auto_next}
-        >Auto Next</button
-      >
+      <button class="toolbar-button" on:click={next}>
+        <i class="fas fa-arrow-right header_icon" />
+        Next
+      </button>
+      <button class="toolbar-button" on:click={ative_auto_next}>
+        <i class="fas fa-play-circle header_icon" />
+        Auto Next
+      </button>
     </div>
   {/if}
+</div>
 
-  {#if !slim}
-    <div class="collapse_frame">
-      <div class="collapse_header" on:click={collapseInput}>Input</div>
-      {#if !collapse_input}
-        <div class="collapse_body" transition:slide>
-          <RegistersHold registers={input_registers} modeInput={true} />
-          <button on:click={handleNewInputRegister}>New Register</button>
-        </div>
+{#if !slim}
+  <div class="collapse_frame">
+    <div class="collapse_header" on:click={collapseInput}>
+      <span class="header_text">Input</span>
+      {#if collapse_input}
+        <i class="fas fa-chevron-right header_icon" />
+      {:else}
+        <i class="fas fa-chevron-down header_icon" />
       {/if}
     </div>
-    <RegistersCards registers={input_registers2} />
-  {/if}
-  <div>
-    Runtime Registers
-    <RegistersHold bind:registers={status.register} modeInput={false} />
+    {#if !collapse_input}
+      <div class="collapse_body" transition:slide>
+        <RegistersCards
+          registers={input_registers2}
+          updateCards={updateInputReg}
+          modeInput={true}
+        />
+      </div>
+    {/if}
   </div>
+{/if}
+<div>
+  Runtime Registers
+  <RegistersCards registers={status.register} modeInput={false} />
 </div>
 
 <style>
@@ -184,21 +192,40 @@
     margin-bottom: 8px;
   }
 
-  div {
-    align-content: space-around;
-  }
-
-  button:focus {
+  button:focus.toolbar-button {
     border: 2px solid #ff3e00;
   }
 
   .collapse_frame {
-    border-color: black;
-    border-radius: 2em;
-    border: 2px solid rgba(255, 62, 0, 0);
+    border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 5px;
+  }
+
+  .collapse_header {
+    background-color: #eee;
+    cursor: pointer;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .collapse_body {
+    padding: 10px;
   }
 
   button:active {
     background-color: rgba(255, 62, 0, 0.2);
+  }
+
+  .header_text {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .header_icon {
+    margin-left: auto;
   }
 </style>

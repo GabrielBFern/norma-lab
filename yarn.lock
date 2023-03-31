@@ -76,6 +76,11 @@
     "style-mod" "^4.0.0"
     "w3c-keyname" "^2.2.4"
 
+"@fortawesome/fontawesome-free@^6.4.0":
+  "integrity" "sha512-0NyytTlPJwB/BF5LtRV8rrABDbe3TdTXqNB3PdZ+UUUZAEIrdOJdmABqKjt4AXwIoJNaRVVZEXxpNrqvE1GAYQ=="
+  "resolved" "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.4.0.tgz"
+  "version" "6.4.0"
+
 "@lezer/common@^1.0.0":
   "integrity" "sha512-SVgiGtMnMnW3ActR8SXgsDhw7a0w0ChHSYAyAUxxrOiJ1OqYWEKk/xJd84tTSPo1mo6DXLObAJALNnd0Hrv7Ng=="
   "resolved" "https://registry.npmjs.org/@lezer/common/-/common-1.0.2.tgz"
@@ -1077,6 +1082,7 @@
   dependencies:
     "codemirror" "^6.0.1"
     "norma-site-wasm" "^0.1.0"
+    "svelte-spa-router" "^3.3.0"
 
 "wrap-ansi@^7.0.0":
   "integrity" "sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q=="
