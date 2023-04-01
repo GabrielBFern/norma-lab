@@ -95,10 +95,17 @@
   }
 
   @media (max-width: 899px) {
-    /* CSS rules for screens less than 900px wide go here */
     .sr-horizontal-frame {
       align-items: center;
       flex-direction: column;
+    }
+
+    .sr-horizontal-frame--container {
+      width: calc(100% - 5rem) !important;
+    }
+
+    .sr-horizontal-frame--slider {
+      display: none;
     }
   }
 </style>
