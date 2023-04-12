@@ -9,7 +9,7 @@
     "serve": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "echo normalab.app > ./dist/CNAME && gh-pages -d dist"
   },
   "devDependencies": {
     "@codemirror/commands": "^6.1.1",

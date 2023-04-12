@@ -1,8 +1,5 @@
 import App from './App.svelte'
 import init from 'norma-site-wasm'
-//import 'codemirror/lib/codemirror.css'
-//import 'codemirror/addon/lint/lint.css'
-//import 'codemirror/theme/dracula.css'
 
 
 
