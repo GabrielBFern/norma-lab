@@ -63,53 +63,47 @@
 
   const menuItems = [
     {
-      label: "File",
+      label: "Arquivo",
       items: [
         {
-          label: "New",
+          label: "Novo",
           fn: () => setValue(""),
         },
         {
-          label: "Save",
+          label: "Salvar",
           fn: () => exportFile("programa.norma", editor.state.doc.toString()),
         },
-        { label: "Load", fn: () => getFileFromUser() },
+        { label: "Carregar", fn: () => getFileFromUser() },
       ],
     },
     {
-      label: "Edit",
+      label: "Edição",
       items: [
-        { label: "Undo", fn: handleUndo },
-        { label: "Redo", fn: handleRedo },
-        { label: "Search", fn: handleSearch },
+        { label: "Desfazer", fn: handleUndo },
+        { label: "Refazer", fn: handleRedo },
+        { label: "Procurar", fn: handleSearch },
       ],
     },
     {
-      label: "Examples",
+      label: "Exemplos",
       items: [
-        { label: "Add", fn: () => handleLoadExample("add.norma") },
+        { label: "Adicionar", fn: () => handleLoadExample("add.norma") },
         {
-          label: "Substract",
+          label: "Substrair",
           fn: () => handleLoadExample("dec.norma"),
         },
         {
-          label: "Add keeping input",
+          label: "Adicionar mantendo registrador",
           fn: () => handleLoadExample("addKeep.norma"),
         },
-        {
-          label: "Multiply",
-          fn: () => handleLoadExample("todo.norma"),
-        },
-        { label: "Primes", fn: () => handleLoadExample("todo.norma") },
-        { label: "Arrays", fn: () => handleLoadExample("todo.norma") },
       ],
     },
     {
-      label: "Help",
+      label: "Ajuda",
       items: [
         { label: "Manual", fn: () => push("#/Manual") },
         {
-          label: "Info",
+          label: "Sobre",
           fn: () => push("#/Author"),
         },
       ],
@@ -197,6 +191,8 @@
         debugExtension,
         EditorView.lineWrapping,
         urlPlugin,
+        EditorView.contentAttributes.of({ spellcheck: "false" }),
+        EditorView.contentAttributes.of({ "data-enable-grammarly": "false" }),
       ],
     });
     editor = new EditorView({
@@ -243,7 +239,7 @@
   <FileToolbar {menuItems} />
 {/if}
 
-<div bind:this={codeDiv} class="editor " class:slim />
+<div bind:this={codeDiv} class="editor" class:slim />
 
 <style>
   /* optional: customize the appearance of the editor */

@@ -119,17 +119,17 @@
     {#if !status.isRunning}
       <button class="toolbar-button" on:click={play}>
         <i class="fas fa-play header_icon" />
-        Run
+        Executar
       </button>
       <button class="toolbar-button" on:click={debug}>
         <i class="fas fa-bug header_icon" />
-        Debug
+        Debugar
       </button>
     {/if}
     {#if status.isRunning}
       <button class="toolbar-button" on:click={reset}>
         <i class="fas fa-redo header_icon" />
-        Reset
+        Resetar
       </button>
     {/if}
   </div>
@@ -137,11 +137,11 @@
     <div class="toolbar debug-toolbar">
       <button class="toolbar-button" on:click={next}>
         <i class="fas fa-arrow-right header_icon" />
-        Next
+        Seguinte
       </button>
       <button class="toolbar-button" on:click={ative_auto_next}>
         <i class="fas fa-play-circle header_icon" />
-        Auto Next
+        Execução automática
       </button>
     </div>
   {/if}
@@ -150,7 +150,7 @@
 {#if !slim}
   <div class="collapse_frame">
     <div class="collapse_header" on:click={collapseInput}>
-      <span class="header_text">Input</span>
+      <span class="header_text">Registradores de entrada</span>
       {#if collapse_input}
         <i class="fas fa-chevron-right header_icon" />
       {:else}
@@ -169,7 +169,7 @@
   </div>
 {/if}
 <div>
-  Runtime Registers
+  Registradores Execução
   <RegistersCards registers={status.register} modeInput={false} />
 </div>
 

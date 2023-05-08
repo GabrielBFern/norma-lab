@@ -5,8 +5,8 @@
   export let slider = 65;
   export let slider_max = 99;
   export let slider_min = 25;
-  export let title_code = "Code";
-  export let title_execution = "Execution";
+  export let title_code = "Código";
+  export let title_execution = "Execução";
   export { _class as class };
   let legend_element;
   let parent_element;
