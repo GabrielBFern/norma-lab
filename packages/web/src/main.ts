@@ -1,5 +1,5 @@
 import App from './App.svelte'
-import init from 'norma-site-wasm'
+import init from 'norma-lab-wasm'
 
 
 

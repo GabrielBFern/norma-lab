@@ -702,7 +702,7 @@
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.4.tgz"
   "version" "3.3.4"
 
-"norma-site-wasm@^0.1.0", "norma-site-wasm@file:E:\\programming\\rust\\tcc\\norma-site\\packages\\rust\\pkg":
+"norma-lab-wasm@^0.1.0", "norma-lab-wasm@file:E:\\programming\\rust\\tcc\\norma-site\\packages\\rust\\pkg":
   "resolved" "file:packages/rust/pkg"
   "version" "0.1.0"
 
@@ -1069,14 +1069,6 @@
   "resolved" "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz"
   "version" "0.1.2"
 
-"url-regex@^5.0.0":
-  "integrity" "sha512-O08GjTiAFNsSlrUWfqF1jH0H1W3m35ZyadHrGv5krdnmPPoxP27oDTqux/579PtaroiSGm5yma6KT1mHFH6Y/g=="
-  "resolved" "https://registry.npmjs.org/url-regex/-/url-regex-5.0.0.tgz"
-  "version" "5.0.0"
-  dependencies:
-    "ip-regex" "^4.1.0"
-    "tlds" "^1.203.0"
-
 "vite@^2.6.4", "vite@^2.9.0":
   "integrity" "sha512-zsBGwn5UT3YS0NLSJ7hnR54+vUKfgzMUh/Z9CxF1YKEBVIe213+63jrFLmZphgGI5zXwQCSmqIdbPuE8NJywPw=="
   "resolved" "https://registry.npmjs.org/vite/-/vite-2.9.8.tgz"
@@ -1096,12 +1088,13 @@
 
 "web@file:E:\\programming\\rust\\tcc\\norma-site\\packages\\web":
   "resolved" "file:packages/web"
-  "version" "0.0.0"
+  "version" "0.0.1"
   dependencies:
     "@fortawesome/fontawesome-free" "^6.4.0"
     "codemirror" "^6.0.1"
-    "norma-site-wasm" "^0.1.0"
+    "norma-lab-wasm" "^0.1.0"
     "svelte-spa-router" "^3.3.0"
+    "url-regex" "^5.0.0"
 
 "wrap-ansi@^7.0.0":
   "integrity" "sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q=="

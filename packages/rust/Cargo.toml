@@ -1,5 +1,5 @@
 [package]
-name = "norma-site-wasm"
+name = "norma-lab-wasm"
 version = "0.1.0"
 authors = ["Gabriel Barbosa Fernandes <fernandesbgabriel@gmail.com>"]
 edition = "2018"
@@ -8,7 +8,7 @@ categories = ["mathematics", "science", "simulation"]
 description = """
 Webpage for education on the Norma Machines.
 """
-repository= "https://github.com/GabrielBFern/norma-site"
+repository= "https://github.com/GabrielBFern/norma-lab"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

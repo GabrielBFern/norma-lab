@@ -1,3 +1,20 @@
+# [NormaLab](https://normalab.app/)
+
+This is a Norma-Machine simulator and visualizer designed to make easier learning about this Machine and Register Machine em general.
+
+Norma Machine is a register machine proposed by Richard Bird in his book Programs and Machines: An Introduction to the Theory of Computation in 1976, this machine was disseminated in the study of theory of computation and is currently widely used by Brazilian universities for the study of this content. This machine works by manipulating the values stored in the registers through commands to increment or decrement the value and also allows making conditional flow deviation according to the registers.
+
+Suggestions and bug reports are welcomed in [issue].
+
+For more info on the machine, please see the [manual].
+
+[Live Demo](https://normalab.app/)
+
+[issue]: https://github.com/GabrielBFern/norma-lab/issues
+[Manual]: https://gabrielbfern.github.io/norma-lab/#/Manual
+
+### How to run localy
+
 1. Clone the repo.
 2. `cd` into repo
 3. Install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating), close and reopen terminal after install.
@@ -72,7 +89,3 @@ cargo install cargo-watch
 ```
 yarn dev
 ```
-
-14. Enjoy! Got some feedback? Open an issue, or better yet, a PR. If you like this template, please star this repo.
-
-

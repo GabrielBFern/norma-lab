@@ -21,7 +21,7 @@
     você a participar da comunidade e ajudar a tornar nossa ferramenta ainda
     melhor!
 
-    <a href="https://github.com/GabrielBFern/norma-site">GitHub</a>
+    <a href="https://github.com/GabrielBFern/norma-lab">GitHub</a>
   </p>
 </div>
 

@@ -3,7 +3,7 @@ import {
     LanguageSupport,
     syntaxTree,
 } from "@codemirror/language";
-import { parse } from "norma-site-wasm";
+import { parse } from "norma-lab-wasm";
 import type { CompletionContext } from "@codemirror/autocomplete";
 import { linter, Diagnostic } from "@codemirror/lint";
 

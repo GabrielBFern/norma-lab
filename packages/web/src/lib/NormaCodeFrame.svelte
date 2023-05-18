@@ -2,7 +2,7 @@
   import Frame from "./Frame.svelte";
   import CodeMirror from "./CodeMirror6.svelte";
   import Executer from "./Executer.svelte";
-  import { NormaInstance } from "norma-site-wasm";
+  import { NormaInstance } from "norma-lab-wasm";
   export let slim = false;
   export let fixedProgram = undefined;
   export let sugestedProgram = undefined;

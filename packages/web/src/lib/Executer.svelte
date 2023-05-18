@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { NormaInstance, WrappedNormaMachine } from "norma-site-wasm";
+  import type { NormaInstance, WrappedNormaMachine } from "norma-lab-wasm";
   import { slide } from "svelte/transition";
   import RegistersCards from "./RegistersCards.svelte";
   import "@fortawesome/fontawesome-free/css/all.css";
