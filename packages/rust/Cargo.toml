@@ -8,7 +8,7 @@ categories = ["mathematics", "science", "simulation"]
 description = """
 Webpage for education on the Norma Machines.
 """
-repository= "https://github.com/GabrielBFern/norma-lab"
+repository = "https://github.com/GabrielBFern/norma-lab"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -18,10 +18,10 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 serde = { version = "1.0.130", features = ["derive"] }
-serde-wasm-bindgen = "0.4"
+serde-wasm-bindgen = "0.6"
 serde_json = "1.0.68"
 pest = "2.5.6"
-norma_machine_rs = {git = "https://github.com/GabrielBFern/norma-machine-rs", branch="main"}
+norma_machine_rs = { git = "https://github.com/GabrielBFern/norma-machine-rs", branch = "main" }
 wasm-bindgen = { version = "0.2.63", features = ["serde-serialize"] }
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
@@ -43,17 +43,9 @@ primal-sieve = "0.3.6"
 num = "0.4.0"
 
 
-
 [dependencies.web-sys]
 version = "0.3.4"
-features = [
-  'Document',
-  'Element',
-  'HtmlElement',
-  'Node',
-  'Window',
-]
-
+features = ['Document', 'Element', 'HtmlElement', 'Node', 'Window']
 
 
 [dev-dependencies]

@@ -5,7 +5,8 @@ import {
 } from "@codemirror/language";
 import { parse } from "norma-lab-wasm";
 import type { CompletionContext } from "@codemirror/autocomplete";
-import { linter, Diagnostic } from "@codemirror/lint";
+import { linter } from "@codemirror/lint";
+import type { Diagnostic } from "@codemirror/lint";
 
 const keywordsSugestion = [
     { label: "inc ", type: "keyword", detail: "Increment" },

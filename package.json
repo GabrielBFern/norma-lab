@@ -19,10 +19,8 @@
     "deploy": "yarn rust:build && yarn web:deploy",
     "ci:build": "yarn rust:build && yarn && yarn web:build"
   },
-  "dependencies": {
-    "concurrently": "^6.3.0"
-  },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^6.3.0",
+    "concurrently": "^9.2.1"
   }
 }
