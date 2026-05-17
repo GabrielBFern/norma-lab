@@ -33,6 +33,8 @@
 
             pkgs.concurrently
 
+            pkgs.wrangler
+
             # Node / JS
             pkgs.nodejs_20
             pkgs.yarn
